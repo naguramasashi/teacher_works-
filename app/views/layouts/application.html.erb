@@ -13,7 +13,7 @@
   <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
   <% end %>
-    <%= yield %>
+  <%= yield %>
   <script>
   $(function(){
     $(".alert").fadeOut(5000);

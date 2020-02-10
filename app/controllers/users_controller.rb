@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
   
   def create 
-    @user=User.new(name: params[:user][:name],email: params[:user][:email],password: params[:user][:password])
+    @user=User.new(name: params[:user][:name],email: params[:user][:email],subject: params[:user][:subject],password: params[:user][:password])
     if @user.save
       redirect_to root_path, success: '登録が完了しました'
     else
@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-  params.require(:user).permit(:name, :email, :password)
+  params.require(:user).permit(:name, :email, :subject, :password)
   end
 end
