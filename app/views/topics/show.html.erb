@@ -1,0 +1,61 @@
+<div class="topic_show_wrapper text-center">
+    <div class="container">
+        <h4 class="text-white ">投稿詳細</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-center"><span class="label label-default">学年</span><%= @topic.grade%></h4>
+            </div>
+            <div class="col-md-6">
+                <h4 class="text-center"><span class="label label-default">科目</span><%= @topic.subject%></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card col-md-offset-4 col-md-4 ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>小単元</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%=@topic.unit %></p>
+                </div>
+            </div>
+            <div class="card col-md-offset-4 col-md-4  ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>授業のねらい</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= simple_format(@topic.goal) %></p>
+                </div>
+            </div>
+            <div class="card col-md-offset-4 col-md-4  ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>授業の概要</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= simple_format(@topic.summary) %></p>
+                </div>
+            </div>
+            <div class="card col-md-offset-4 col-md-4  ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>授業ファイル</h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                      <% if @topic.lesson.attached? && @Attachment_image%>
+                        <%= image_tag @topic.lesson %>
+                      <% end %>
+                    </p>
+                     
+                    <p>
+                      <strong>ダウンロード:</strong>
+                      <% if @topic.lesson.attached? %>
+                        <%= link_to "添付ファイル(" +  @ext +")" ,rails_blob_path(@topic.lesson) %>
+                      <% end %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%= link_to '投稿の編集', edit_topic_path(@topic) , class: 'text-white' %>
+<%= link_to '投稿一覧', topics_path , class: 'text-white' %>

@@ -19,6 +19,12 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
 
     super + pick_errors(attribute)
   end
+  def number_field(attribute, options={})
+    return super if options[:no_errors]
+
+    super + pick_errors(attribute)
+  end
+  
   def full_message(attribute, message)
   return message if attribute == :base
   attr_name = attribute.to_s.tr('.', '_').humanize

@@ -1,5 +1,9 @@
- <h1>新規投稿</h1>
- <%= form_for @topic, :builder => CustomFormBuilder do |f| %>
+<div class="d-flex align-items-center">
+    <h1>編集</h1>
+    <div class="ml-auto posts_button">
+        <%= link_to '投稿一覧', topics_path, class: 'btn btn-outline-info' %>
+    </div>
+    <%= form_for @topic, :builder => CustomFormBuilder do |f| %>
         　<div class="form-group">
             <%= f.label :学年, class: 'text-white' %>
             <%= f.number_field :grade, class: 'form-control' %>
@@ -30,11 +34,6 @@
           </div>
 
           <%= f.submit "登録", class: 'btn-block btn-white' %>
-<% end %>
+    <% end %>
 
-
-
-
-
-
- 
+</div>
