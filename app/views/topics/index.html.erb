@@ -24,8 +24,8 @@
             <td><%= topic.summary %></td>
             <% if logged_in? && current_user.id == topic.user_id %>
               <td><%= link_to '削除', topic_path(topic), method: :delete, class: 'btn btn-outline-info'%></td>
-              <td><%= link_to '詳細', topic_path(topic), class: 'btn btn-outline-info' %></td>
             <% end %>
+            <td><%= link_to '詳細', topic_path(topic), class: 'btn btn-outline-info' %></td>
         </tr>
       <% end %>
   </tbody>

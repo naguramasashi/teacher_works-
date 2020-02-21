@@ -55,12 +55,14 @@
             </div>
         </div>
         <div>
+            <h2>コメント一覧</h2>
             <% @coments.each do |coment| %>
                 <p>
                     <strong>
                         <%= coment.user.name%>
                         コメント：<%= simple_format coment.content %>
                     </strong>
+                    <%=link_to "削除", topic_coment_path(coment.topic.id, coment.id), method: :delete %>
                 </p>
             <% end %>
             <h2>コメントを追加</h2>
