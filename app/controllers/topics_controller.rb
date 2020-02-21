@@ -17,15 +17,16 @@ class TopicsController < ApplicationController
   end
   def show 
     @topic = Topic.find(params[:id])
-        if @topic.lesson.attached?
-          fullfilename = rails_blob_path(@topic.lesson)
-          @ext = File.extname(fullfilename).downcase
-          if @ext== ".jpg" ||  @ext== ".jpeg" ||  @ext== ".png" ||  @ext== ".gif" 
-            @Attachment_image = true
-          else
-            @Attachment_image = false
-          end    
-        end   
+    @coments = @topic.coments.includes(:user)
+    if @topic.lesson.attached?
+      fullfilename = rails_blob_path(@topic.lesson)
+      @ext = File.extname(fullfilename).downcase
+      if @ext== ".jpg" ||  @ext== ".jpeg" ||  @ext== ".png" ||  @ext== ".gif" 
+        @Attachment_image = true
+      else
+        @Attachment_image = false
+      end
+    end
   end
   def edit
     @topic= Topic.find(params[:id])
@@ -49,6 +50,6 @@ class TopicsController < ApplicationController
   end
   private
   def topic_params
-    params.require(:topic).permit(:grade,:subject,:unit,:goal,:summary, :lesson ,:teaching_material,:reference)
+    params.require(:topic).permit(:grade,:subject,:unit,:goal,:summary, :lesson ,:reference)
   end
 end

@@ -54,6 +54,22 @@
                 </div>
             </div>
         </div>
+        <div>
+            <% @coments.each do |coment| %>
+                <p>
+                    <strong>
+                        <%= coment.user.name%>
+                        コメント：<%= simple_format coment.content %>
+                    </strong>
+                </p>
+            <% end %>
+            <h2>コメントを追加</h2>
+            <%= form_for( [@topic, @topic.coments.build] ) do |f| %>
+                <p><%= f.text_area :content, class:'form-control'%></p>
+                <%= f.submit "コメントする", class: 'btn-block btn-white' %>
+            <% end %>
+            <%= link_to "ホームへ戻る", topics_path %>
+        </div>    
     </div>
 </div>
 
