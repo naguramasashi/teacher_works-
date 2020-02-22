@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :topics do
     resources :coments, only: [:create,:destroy]
+    get :search, on: :collection
   end
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

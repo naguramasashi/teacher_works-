@@ -2,11 +2,11 @@
  <%= form_for @topic, :builder => CustomFormBuilder do |f| %>
         　<div class="form-group">
             <%= f.label :学年, class: 'text-white' %>
-            <%= f.number_field :grade, class: 'form-control' %>
+            <%= f.select :grade, ["1年","2年","3年","その他"], :prompt => "選択してください", class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :科目, class: 'text-white' %>
-            <%= f.text_field :subject, class: 'form-control' %>
+            <%= f.select :subject, ["国語","数学","理科","英語","社会","その他"], :prompt => "選択してください", class: 'form-control' %>
           </div>
           <div class="form-group">
             <%= f.label :単元, class: 'text-white' %>

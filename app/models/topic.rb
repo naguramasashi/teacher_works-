@@ -6,5 +6,4 @@ class Topic < ApplicationRecord
     belongs_to :user
     has_many :coments
     has_one_attached :lesson
-    
 end

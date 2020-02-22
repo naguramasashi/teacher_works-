@@ -1,4 +1,14 @@
 class TopicsController < ApplicationController 
+  def search
+    redirect_to root_path if params[:search] == ""
+    split_search = params[:search].split(/[[:blank:]]+/)
+    @topics = [] 
+    split_search.each do |search|
+      next if search == "" 
+      @topics += Topic.where(['subject LIKe ? or unit LIKE ? or summary LIKE ? or grade LIKE ? or reference LIKE ?',"%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%"])
+    end 
+    @topics.uniq! 
+  end
   def index
     @topics = Topic.all
   end

@@ -3,7 +3,7 @@ class CreateTopics < ActiveRecord::Migration[5.2]
     create_table :topics do |t|
       t.integer :user_id
       #学年
-      t.integer :grade
+      t.string :grade
       #科目
       t.string :subject
       #単元
