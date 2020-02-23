@@ -1,16 +1,16 @@
-<div class="topic_show_wrapper text-center">
-    <div class="container">
-        <h4 class="text-white ">投稿詳細</h4>
+<div class="topics_show_wrapper">
+    <div class="topics-show-container">
+        <h4 class="text-white text-center ">投稿詳細</h4>
         <div class="row">
             <div class="col-md-6">
                 <h4 class="text-center"><span class="label label-default">学年</span><%= @topic.grade%></h4>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <h4 class="text-center"><span class="label label-default">科目</span><%= @topic.subject%></h4>
             </div>
         </div>
         <div class="row">
-            <div class="card col-md-offset-4 col-md-4 ">
+            <div class="card col-md-offset-2 col-md-8 col-md-offset-2 ">
                 <div class="card-header bg-info mb-3 text-white">
                     <h4>小単元</h4>
                 </div>
@@ -18,23 +18,7 @@
                     <p class="card-text"><%=@topic.unit %></p>
                 </div>
             </div>
-            <div class="card col-md-offset-4 col-md-4  ">
-                <div class="card-header bg-info mb-3 text-white">
-                    <h4>授業のねらい</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><%= simple_format(@topic.goal) %></p>
-                </div>
-            </div>
-            <div class="card col-md-offset-4 col-md-4  ">
-                <div class="card-header bg-info mb-3 text-white">
-                    <h4>授業の概要</h4>
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><%= simple_format(@topic.summary) %></p>
-                </div>
-            </div>
-            <div class="card col-md-offset-4 col-md-4  ">
+            <div class="card col-md-offset-2 col-md-8 col-md-offset-2 ">
                 <div class="card-header bg-info mb-3 text-white">
                     <h4>授業ファイル</h4>
                 </div>
@@ -53,24 +37,50 @@
                     </p>
                 </div>
             </div>
+            <div class="card col-md-offset-2 col-md-8 col-md-offset-2 ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>参考資料</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%=@topic.reference %></p>
+                </div>
+            </div>
+            <div class="card col-md-offset-1 col-md-10 col-md-offset-1 ">
+                <div class="card-header bg-info lg-3 text-white">
+                    <h4>授業のねらい</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= simple_format(@topic.goal) %></p>
+                </div>
+            </div>
+            <div class="card col-md-offset-1 col-md-10 col-md-offset-1 ">
+                <div class="card-header bg-info mb-3 text-white">
+                    <h4>授業の概要</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><%= simple_format(@topic.summary) %></p>
+                </div>
+            </div>
         </div>
-        <div>
-            <h2>コメント一覧</h2>
-            <% @coments.each do |coment| %>
-                <p>
-                    <strong>
-                        <%= coment.user.name%>
-                        コメント：<%= simple_format coment.content %>
-                    </strong>
-                    <%=link_to "削除", topic_coment_path(coment.topic.id, coment.id), method: :delete %>
-                </p>
-            <% end %>
-            <h2>コメントを追加</h2>
-            <%= form_for( [@topic, @topic.coments.build] ) do |f| %>
-                <p><%= f.text_area :content, class:'form-control'%></p>
-                <%= f.submit "コメントする", class: 'btn-block btn-white' %>
-            <% end %>
-            <%= link_to "ホームへ戻る", topics_path %>
+        <div class="row">
+            <div class="card col-md-offset-1 col-md-10 col-md-offset-1 ">
+                <h4>コメント一覧</h4>
+                <% @coments.each do |coment| %>
+                    <p>
+                        <strong>
+                            <%= coment.user.name%>
+                            コメント：<%= simple_format coment.content %>
+                        </strong>
+                        <%=link_to "削除", topic_coment_path(coment.topic.id, coment.id), method: :delete %>
+                    </p>
+                <% end %>
+                <h4>コメントを追加</h4>
+                <%= form_for( [@topic, @topic.coments.build] ) do |f| %>
+                    <p><%= f.text_area :content, class:'form-control'%></p>
+                    <%= f.submit "コメントする", class: 'btn-block btn-white' %>
+                <% end %>
+                <%= link_to "ホームへ戻る", topics_path %>
+            </div>
         </div>    
     </div>
 </div>

@@ -1,0 +1,97 @@
+h1, h2 {
+  font-weight: 100;
+}
+
+
+.btn-white {
+  color:#fff;
+  border: 1px solid #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.3);
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.top-hero-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('教室.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+.top-hero-container {
+  padding-top: 220px;
+  h1 {
+    font-size: 56px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    margin-bottom: 60px;
+  }
+}
+.form-control {
+  height: 45px;
+}
+
+.users-new-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0,0,0,0.1);
+  .users-new-container {
+    padding-top: 100px;
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}  
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+.navbar-transparent {
+  margin-bottom: 0px;
+  background-color: rgba(0,0,0,0.7);
+  a {
+    color: #fff !important;
+  }
+
+  .navbar-brand {
+    padding: 0px;
+    margin-top: 15px;
+  }
+
+  img {
+    height: 40px;
+  }
+}
+.btn-black {
+  color: #565656;
+  border: 1px solid #565656;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #565656;
+  }
+}
+.topics_show_wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  .topics-show-container {
+    padding-top: 100px;
+    }
+}
