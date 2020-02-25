@@ -1,30 +1,44 @@
-<%= form_with url: search_topics_path, method: :get, local: true do |f| %>
-    <%= f.text_field :search %>
-    <%= f.submit :search %>
-<% end %> 
-<table>
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" style="width: 40px">学年</th>
-      <th scope="col" style="width: 40px">科目</th>
-      <th scope="col" style="width: 200px">単元</th>
-      <th scope="col" style="width: 500px">概要</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-      <% @topics.each do |topic| %>
-        <tr>
-            <th><%= topic.grade %></th>
-            <td><%= topic.subject %></td>
-            <td><%= topic.unit %></td>
-            <td><%= topic.summary %></td>
-            <% if logged_in? && current_user.id == topic.user_id %>
-              <td><%= link_to '削除', topic_path(topic), method: :delete, class: 'btn btn-outline-info'%></td>
-            <% end %>
-            <td><%= link_to '詳細', topic_path(topic), class: 'btn btn-outline-info' %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
+  <div class="search_index_wrapper">  
+    <div class="container-fluid">
+      <div class="d-flex align-items-center ">
+        <%= form_with url: search_topics_path, method: :get, local: true do |f| %>
+        　<%= f.text_field :search %>
+          <%= f.submit :search %>
+        <% end %>  
+      </div>
+      <h1 class="h3 mb-2 text-gray-800">検索結果</h1>
+      <div class="ml-auto posts_button">
+        <%= link_to '新規投稿', new_topic_path ,class: 'text-white' %>
+      </div>    
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 40px">学年</th>
+                <th scope="col" style="width: 40px">科目</th>
+                <th scope="col" style="width: 200px">単元</th>
+                <th scope="col" style="width: 500px">概要</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>          
+            <tbody>
+              <% @topics.each do |topic| %>
+                <tr>
+                  <td><%= topic.grade %></td>
+                  <td><%= topic.subject %></td>
+                  <td><%= topic.unit %></td>
+                  <td><%= topic.summary %></td>
+                  <% if logged_in? && current_user.id == topic.user_id %>
+                    <td><%= link_to '削除', topic_path(topic), method: :delete, class: 'btn btn-outline-info'%></td>
+                  <% end %>
+                  <td><%= link_to '詳細', topic_path(topic), class: 'btn btn-outline-info' %></td>
+                </tr>
+              <% end %>  
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>   
