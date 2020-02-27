@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'topics/new'
   get 'sessions/new'
   root 'pages#index'
-  resources :users
+  resources :users, only:[:new,:create]
   resources :topics do
     resources :coments, only: [:create,:destroy]
     get :search, on: :collection

@@ -1,39 +1,10 @@
-<div class="d-flex align-items-center">
-    <h1>編集</h1>
-    <div class="ml-auto posts_button">
-        <%= link_to '投稿一覧', topics_path, class: 'btn btn-outline-info' %>
-    </div>
-    <%= form_for @topic, :builder => CustomFormBuilder do |f| %>
-        　<div class="form-group">
-            <%= f.label :学年, class: 'text-white' %>
-            <%= f.number_field :grade, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :科目, class: 'text-white' %>
-            <%= f.text_field :subject, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :単元, class: 'text-white' %>
-            <%= f.text_field :unit, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :授業のねらい, class: 'text-white' %>
-            <%= f.text_area :goal, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :授業の概要, class: 'text-white' %>
-            <%= f.text_area :summary, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :添付ファイル, class: 'text-white' %>
-            <%= f.file_field :lesson, class: 'form-control' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :参考資料, class: 'text-white' %>
-            <%= f.text_area :reference, class: 'form-control' %>
-          </div>
-
-          <%= f.submit "登録", class: 'btn-block btn-white' %>
-    <% end %>
-
+<div class="topics-edit-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 topics-edit-container">
+        <h1 class="text-center">投稿編集</h1>
+　　　　<%= render partial: 'form',locals: { topic: @topic}%>
+　　　</div>
+　　</div>
+　</div>
 </div>

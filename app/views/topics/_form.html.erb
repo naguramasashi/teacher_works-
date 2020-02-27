@@ -1,11 +1,6 @@
- 
-<div class="topics-new-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-3 col-md-6 topics-new-container">
-        <h1 class="text-center">新規投稿</h1>
-　　　　<%= form_for @topic , :builder => CustomFormBuilder do |f| %>
-          <div class="form-group">
+
+ <%= form_for topic, :builder => CustomFormBuilder do |f| %>
+        　<div class="form-group">
             <%= f.label :学年, class: 'text-white' %>
             <%= f.select :grade, ["1年","2年","3年","その他"], :prompt => "選択してください", class: 'form-control' %>
           </div>
@@ -33,15 +28,6 @@
             <%= f.label :参考資料, class: 'text-white' %>
             <%= f.text_area :reference, class: 'form-control' %>
           </div>
+
           <%= f.submit "登録", class: 'btn-block btn btn-primary pull-right' %>
-        <% end %>  
-　　　</div>
-　　</div>
-　</div>
-</div>
-
-
-
-
-
- 
+<% end %>
